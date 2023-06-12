@@ -1,14 +1,21 @@
 import { defineStore } from 'pinia'
 import { getAllTodos } from '@/services/api/ApiService'
+import type { ITodo } from '@/services/api/types'
+
+type RootState = {
+    todos: ITodo[];
+};
 
 export const useTodoStore = defineStore('todo', {
-  state: () => {
-    return {}
+  state: (): RootState => {
+    return {
+      todos: []
+    }
   },
   actions: {
-    async getTodos(limit, skip) {
+    async getTodos(limit: number, skip: number): void {
       const { todos } = await getAllTodos(limit, skip).then((res) => res.data)
-      // this.todos = todos
+    //   this.todos = todos
     }
   }
 })

@@ -1,7 +1,40 @@
-export interface IProduct {}
+export interface IProduct {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    stock: number;
+    brand: string;
+    category: string;
+    thumbnail: string;
+    images: Array<string>
+}
 
-export interface ITodo {}
+export interface ITodo {
+    id: string;
+    todo: string;
+    completed: boolean;
+    userId: number;
+}
 
-export interface getAllProductsResponse {}
+// Здесь добавил свойство data, потому что getAllProducts возвращает полный response, а не только поле data
+export interface getAllProductsResponse {
+    data: {
+        products: IProduct[];
+        total: number;
+        skip: number;
+        limit: number;
+    }
+}
 
-export interface getAllTodosResponse {}
+// Здесь добавил свойство data, потому что getAllTodos возвращает полный response, а не только поле data
+export interface getAllTodosResponse {
+    data: {
+        todos: ITodo[];
+        total: number;
+        skip: number;
+        limit: number;
+    }
+}
