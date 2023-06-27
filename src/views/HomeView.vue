@@ -15,18 +15,14 @@
 import { defineComponent } from 'vue'
 import ProductItem from '@/components/ProductItem.vue'
 import { getAllProducts } from '@/services/api/ApiService'
-import type { IProduct, getAllProductsResponse } from '@/services/api/types'
-
-type RootData = {
-  products: IProduct[]
-}
+import type { IProduct } from '@/services/api/types'
 
 export default defineComponent({
   components: { ProductItem },
   data() {
     return {
-      products: []
-    } as RootData
+      products: [] as IProduct[],
+    }
   },
   methods: {
     deleteProduct(id: number) {
@@ -34,7 +30,7 @@ export default defineComponent({
     }
   },
   async mounted() {
-    this.products = await getAllProducts().then((res: getAllProductsResponse) => res.data.products)
+    this.products = await getAllProducts().then((res) => res.data.products)
   }
 })
 </script>

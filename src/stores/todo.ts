@@ -13,7 +13,7 @@ export const useTodoStore = defineStore('todo', {
     }
   },
   actions: {
-    async getTodos(limit: number, skip: number): void {
+    async getTodos(limit: number, skip: number) {
       const { todos } = await getAllTodos(limit, skip).then((res) => res.data)
     //   this.todos = todos
     }

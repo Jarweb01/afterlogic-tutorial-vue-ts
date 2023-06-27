@@ -1,12 +1,14 @@
-import instance from '@/services/api/instance'
+import type { AxiosResponse } from 'axios'
+import instance from '@/services/api/instance.js'
 import type { getAllProductsResponse, getAllTodosResponse } from '@/services/api/types'
 
-// https://dummyjson.com/docs/products
-export const getAllProducts = (): Promise<getAllProductsResponse> => {
-    return instance.get('/products');
+export const getAllProducts = (): Promise<AxiosResponse<getAllProductsResponse>> => {
+    return instance.get<getAllProductsResponse>('/products')
 }
 
-// https://dummyjson.com/docs/todos
-export const getAllTodos = (limit: number, skip: number): getAllTodosResponse => {
-  return instance.get(`/todos?limit=${limit}&skip=${skip}`)
+export const getAllTodos = (
+    limit: number,
+    skip: number
+): Promise<AxiosResponse<getAllTodosResponse>> => {
+    return instance.get<getAllTodosResponse>(`/todos?limit=${limit}&skip=${skip}`)
 }
