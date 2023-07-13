@@ -21,20 +21,16 @@ export interface ITodo {
 
 // Здесь добавил свойство data, потому что getAllProducts возвращает полный response, а не только поле data
 export interface getAllProductsResponse {
-    data: {
         products: IProduct[];
         total: number;
         skip: number;
         limit: number;
-    }
 }
 
 // Здесь добавил свойство data, потому что getAllTodos возвращает полный response, а не только поле data
 export interface getAllTodosResponse {
-    data: {
         todos: ITodo[];
         total: number;
         skip: number;
         limit: number;
-    }
 }
